@@ -33,7 +33,7 @@ schema_view = get_schema_view(
 )
 
 def home(request):
-    return JsonResponse({"message": "Collaborative Todo API is running 🚀"})
+    return JsonResponse({"Collaborative Todo API is running 🚀"})
 
 urlpatterns = [
 
