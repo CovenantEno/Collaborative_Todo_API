@@ -36,6 +36,14 @@ def home(request):
     return JsonResponse({"message": "Collaborative Todo API is running 🚀"})
 
 urlpatterns = [
+
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', 
+            schema_view.without_ui(cache_timeout=0), 
+            name='schema-json'),
+    path('swagger/', 
+         schema_view.with_ui('swagger', cache_timeout=0), 
+         name='schema-swagger-ui'),
+    
     path('', home),
     path('admin/', admin.site.urls),
     path('auth/', include('Users.urls')),   # Auth endpoints
