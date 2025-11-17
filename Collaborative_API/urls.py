@@ -19,6 +19,7 @@ from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from django.http import JsonResponse
 
 # Schema view for Swagger
 schema_view = get_schema_view(
@@ -34,7 +35,11 @@ schema_view = get_schema_view(
    permission_classes=[permissions.AllowAny],
 )
 
+def home(request):
+    return JsonResponse({"message": "Collaborative Todo API is running 🚀"})
+
 urlpatterns = [
+    path('', home),
     path('admin/', admin.site.urls),
     path('auth/', include('Users.urls')),   # Auth endpoints
     path('api/', include('Task.urls')),     # Task app includes Todo + nested tasks
